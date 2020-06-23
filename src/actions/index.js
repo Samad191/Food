@@ -6,9 +6,16 @@ export const userAction = (userInfo) => {
   }
 }
 
-export const addAction = (name, password) => {
+export const addUser = (name, password) => {
     return{
       type: 'ADD_USER',
       payload:{name,password}
     }
+}
+
+export const isLogin = (login) => {
+  return{
+    type: 'SIGN_IN',
+    payload: login
+  }
 }

@@ -9,7 +9,12 @@ import { faSignInAlt, faKey } from '@fortawesome/free-solid-svg-icons'
 import { faVenusMars, faUserTie, faEnvelope, faSortNumericUpAlt, faUnlockAlt, faGlobeAsia, faFlag, faCity } from '@fortawesome/free-solid-svg-icons'
 
 import { connect } from 'react-redux'
-import { userAction } from './actions/index'
+import { userAction, addUser } from './actions/index'
+
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
 
 class Register extends Component{
 
@@ -47,22 +52,22 @@ class Register extends Component{
     }
 
     handleSubmit = (e) => {
-        console.log(this.state)
-        e.preventDefault()
+       
+        // e.preventDefault()
+        this.props.addUser(this.state.userName, this.state.userPassword)
+        
+        
     }
 
-    getState = () => {
-        console.log(this.state)
-    }
-    
-    
+   
     render() {
+        console.log(this.props)
         return(
-            
-            <form onSubmit={this.handleSubmit}  >
+            <div >
                     <Nav />
-                <Link to = '/signin' className='waves-effect waves-light btn'  style={{marginLeft:'1150px', marginTop:'20px' }} >Sign In
-            <FontAwesomeIcon style={{marginLeft:'10px'}} icon={ faSignInAlt} />  </Link>
+                {/* <Link to = '/signin' className='waves-effect waves-light btn'  style={{marginLeft:'1150px', marginTop:'20px' }} >Sign In
+            <FontAwesomeIcon style={{marginLeft:'10px'}} icon={ faSignInAlt} />  
+            </Link> */}
 
             <div>
                 <h4 style={{ marginLeft: '560px'}} >Register</h4>
@@ -110,22 +115,24 @@ class Register extends Component{
                 </div>
 
                 <div className='input-field col s3' >
-                <FontAwesomeIcon icon={faKey} style={{marginLeft:'150px', marginTop:'15px'}}/>
+                {/* <FontAwesomeIcon icon={faKey} style={{marginLeft:'150px', marginTop:'15px'}}/> */}
+                <i className='material-icons' style={{marginLeft:'150px', marginTop:'6px'}} >lock</i>
                     <input value={this.state.userConfirmPassword} type='password' onChange={(e) => this.handleUserConfirmPassword(e)} />
                     <label >Confirm Password</label>
+                   
                 </div>    
             </div> 
 
             {this.state.userPassword === this.state.userConfirmPassword? null: <p style={{color: 'red', marginLeft:'580px'}} >Passwords don't match</p> }           
             { this.state.userAge < 0 ? <p style={{color: 'red', marginLeft:'580px' }}  >Age not correct</p>  : null }
                         
-            <br/><button className='btn waves-effect waves-light' type='submit' style={{marginLeft:'600px'}} >Submit <i class="material-icons right">send</i> </button><br/>
+            <br/><button className='btn waves-effect waves-light' onClick={this.handleSubmit} style={{marginLeft:'600px'}} >Submit <i class="material-icons right">send</i> </button><br/>
             <div>
             </div>
         </div>
-            <button onClick={this.getState} >Get State</button>
-           
-        </form>
+          
+           <br/>
+        </div>
         )
     }
 }
@@ -134,11 +141,11 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps,) (Register)
+export default connect(mapStateToProps,{addUser}) (Register)
 
 
 {/* <div className='input-field col s3' >
 <FontAwesomeIcon icon={faKey} style={{marginLeft:'150px', marginTop:'15px'}}/>
     <input  id='first_name7' type='password' className='validate'   />
     <label className='active' htmlFor='first_name7' >Confirm Password</label>
-</div> */}
+</div> */} 

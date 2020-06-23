@@ -1,50 +1,102 @@
 import React, { Component } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { faHamburger } from '@fortawesome/free-solid-svg-icons'
- 
 import { faPersonBooth } from '@fortawesome/free-solid-svg-icons'
+
 import Nav from '../Nav'
+import Footer from '../Footer/Footer'
+
+// import { isLogin }from '../actions/index'
+
+import { connect } from 'react-redux'
+
 
 class SignIn extends Component {
 
-  onSubmit = () => {}
+  state = { name:'', password:'', match:false, match2:false, signIn: false }
 
+  handleUserName = (e) => {
+    this.setState({ name: e.target.value })
+    
+  }
 
+  handleUserPassword = (e) => {
+    this.setState({ password: e.target.value })
+  }
+
+  checkUser = () => {
+    
+    if(this.props.userReducer.name === this.state.name && this.props.userReducer.password === this.state.password) {
+      this.setState({match:true, signIn: true})
+      alert('You have signed successfully signed In')
+      // this.props.signIn(true)
+      window.location.href = '/add'
+    }
+
+    else  { 
+    this.setState({match2: true})
+    alert('Invalid User')
+    }
+
+   
+      
+  }  
+
+  
     render() {
+      console.log(this.props)
+      
+      // console.log(this.props.location)
         return (
-            <div>
+          <div>
+            
               <Nav  />
                 <h4 style={{marginLeft:'590px'}} >Sign In</h4>
 
             <div >
-              <form class="col s12" style={{marginLeft:'500px'}} autoComplete='off' >
+              <div class="col s12" style={{marginLeft:'500px'}} autoComplete='off'  >
                 <div class="row">
                   <div class="input-field col s5">
                   <i class="material-icons prefix">account_circle</i>
-                    <input id="input_text" type="text" />
+                    <input id="input_text" type="text" onChange={(e) => this.handleUserName(e)} />
                     <label for="input_text">Name</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s5">
                   <i class="material-icons prefix">vpn_key</i>
-                    <input id="input_text2" type="password"  />
+                    <input id="input_text2" type="password" onChange={(e) => this.handleUserPassword(e)} />
                     <label for="input_text2">Password</label>
                   </div>
                 </div>
+              </div>
+            </div>
 
-              </form>
-            </div>
-                  
-      {/* <FontAwesomeIcon icon={faPersonBooth} />   */}
-  
-  <a class="waves-effect waves-light btn" style={{marginLeft:'600px'}} >Submit</a>
+                 {/* {this.state.match ? <h4>User is valid</h4>: null} 
+                 {this.state.match2 ? <h4>User is not valid</h4>: null}
+   */}
+      <button onClick={this.checkUser} class="waves-effect waves-light btn" type='submit' style={{marginLeft:'600px'}} >Submit</button>
             
-            </div>
+        <br/><br/><br/><br/><br/><br/><br/>
+
+        </div>
+            
         )
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+  return state
+}
+
+// const mapDispatchToProps = (dispatch) => {
+//     return ({
+//       signIn: (login) => {
+//         dispatch(isLogin(login))
+//       }
+//     })
+// }
+
+
+export default connect(mapStateToProps ) (SignIn)

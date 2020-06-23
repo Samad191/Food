@@ -7,24 +7,26 @@ import SignIn from './signIn/SignIn'
 import DashBoard from './DashBoard/DashBoard'
 // import Food from './Food/Food'
 import Restaurant from './DashBoard/Restaurant/Restaurant'
+import Add from './Add/Add'
+
 
 import Footer from './Footer/Footer'
 
 import { connect } from 'react-redux'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import Category from './DashBoard/Category/Category';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 
 class App extends Component{
   render() {
     return(
-      <div className="App" style={{backgroundColor:'azure', height:'666px'}} > 
+      <div className="App" style={{backgroundColor:'azure'}} > 
 
       
       <BrowserRouter>
         <Switch>
+          
         <Route path='/' exact component={DashBoard} />
 
         <Route path='/register' exact component={Register} />
@@ -33,15 +35,12 @@ class App extends Component{
 
         <Route path='/signin' exact component={SignIn}  />
 
-        <Route path='/category/:id' exact component={Category} />
-
-        {/* <Route path='/food' exact component={Food} /> */}
-        
-    
-
+        <Route path='/add' exact component={Add} />
+   
+        {/* <Route path='/food' exact component={Food} /> */}   
         </Switch>
       </BrowserRouter>
-      <br />
+      <Footer/>
       
 
     </div>

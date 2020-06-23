@@ -49,7 +49,6 @@ class Restaurant extends Component {
                         <div className=' col s6' >
                         
                      {/* <img src={A} style={{ width:'600px'}} />  */}
-
                      <img style={{padding:'30px', height:'270px', width:'380px'}} src={this.props.rootReducer[this.props.match.params.id-1].image} />
                 
 
@@ -67,7 +66,7 @@ class Restaurant extends Component {
                     </div>
 
                     <h2> {this.props.info} </h2>
-                    <div  >
+                    <div   >
                     {this.props.rootReducer.map((prop) => {
                         
                         return (
@@ -75,14 +74,14 @@ class Restaurant extends Component {
                                 <div style={{marginLeft:'40px'}} >
                                      
                                         
-                                        <h2> {prop.name} </h2>
-                                        
+                                        <h2>Name: {prop.name} </h2>
+                                        <h4>Location: {prop.address} </h4>
                                     <div> {prop.dishes.map((dish) => <div>
                                             {/* {console.log(dish)} */}
                                         <div class="row">
                                         
                                             <div class="col s12 m5 ">
-                                            <div class="card z-depth-4">
+                                            <div class="card z-depth-4" >
                                                 <div class="card-image">
                                                 </div>
                                                 <div class="card-content">

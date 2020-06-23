@@ -4,8 +4,9 @@ import Nav from '../Nav'
 import { BrowserRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Footer from '../Footer/Footer'
-
 import A from './download.jpeg'
+
+
 
 import B from '../assets/1.jpeg'
 import C from '../assets/2.jpeg'
@@ -13,6 +14,8 @@ import D from '../assets/4.jpeg'
 import E from '../assets/5.jpeg'
 import F from '../assets/6.jpeg'
 import G from '../assets/7.jpeg'
+import H from '../assets/9.jpeg'
+import I from '../assets/11.jpg'
 
 
 import Cart from './Cart'
@@ -25,7 +28,7 @@ class DashBoard extends Component {
     state = 
     { 
         dish: '',
-        button:['BBQ', 'Chinese','FastFood'],
+        buttons:['BBQ', 'Chinese','FastFood'],
         images:['A','B','C','D','E','F','G'],
         value:A
     }
@@ -59,21 +62,23 @@ class DashBoard extends Component {
     
     
     render() {
-        const style={color: 'red'}
+        
+
         
         return(
             <div>
                 <Nav />
-                
-                <input onChange={(e) => this.onSearch(e)} />
+                <br/>
+{/* 
+                <p style={{height:'500px', width:'1430px', backgroundColor:'black'}} > <img src={H} style={{height:'270px', width:'380px', marginTop:'50px'}} /> </p>
+                <p style={{color:'white'}} >Hello</p> */}
+{/* 
+                <input onChange={(e) => this.onSearch(e)} /> */}
 
-            <div>
-                <Link className='btn' to='/category/1' value={this.state.button[0]} > {this.state.button[0]} </Link>
-                <Link className='btn' to='/category/2' value={this.state.button[1]} > {this.state.button[1]} </Link>
-                <Link className='btn' to='/category/3' value={this.state.button[2]} > {this.state.button[2]} </Link>
+            <div className='responsive' >
+              
                 <div className='row' >
 
-                    {/* {console.log(this.props.rootReducer)} */}
                 
                 {this.props.rootReducer.map((re) => {
                      
@@ -81,12 +86,14 @@ class DashBoard extends Component {
                         
                     <div className='col s3' style={{padding:'15px'}} key={re.id} >
                         
-                        <div className='card'  >
+                        <div className='card light-blue lighten-5'  >
                             <div className='card-image' onClick={() => console.log(re.id) } >
 {/*                             
                                 <img src={A} /> */}
 
-                                 <Link to={`dashboard/${re.id}`}  > <img src={re.image} style={{height:'150px', width:'290px'}} /> </Link> 
+                                 <Link to={`dashboard/${re.id}`}  > 
+                                    <img src={re.image} style={{height:'170px', width:'327px'}} /> 
+                                 </Link> 
                                 
 {/* 
                                 <span className='card-title'  > Title </span> */}
@@ -108,7 +115,7 @@ class DashBoard extends Component {
                 <br />
                 </div>
                     </div>
-                    <Footer />
+                
                 
             </div>
         )

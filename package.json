@@ -3,19 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.10",
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@material-ui/core": "^4.10.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
+    "firebase": "^7.15.3",
     "font-awesome": "^4.7.0",
+    "material-icons": "^0.3.1",
     "materialize-css": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-icons": "^3.10.0",
     "react-multi-select-component": "^2.0.10",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -24,6 +28,7 @@
     "reactjs-dropdown-component": "^1.1.2",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "semantic-ui": "^2.4.2"
   },
   "scripts": {
@@ -46,5 +51,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samad191/Food.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samad191/Food/issues"
+  },
+  "homepage": "https://github.com/Samad191/Food#readme"
 }
