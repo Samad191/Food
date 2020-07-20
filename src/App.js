@@ -1,56 +1,48 @@
-import React, { Component } from 'react';
-import './App.css';
-import Register from './Register'
-import Nav from './Nav'
+import React, { Component } from "react";
+import "./App.css";
+import Register from "./Register";
+import Nav from "./Nav";
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
-import SignIn from './signIn/SignIn'
-import DashBoard from './DashBoard/DashBoard'
+import SignIn from "./signIn/SignIn";
+import DashBoard from "./DashBoard/DashBoard";
 // import Food from './Food/Food'
-import Restaurant from './DashBoard/Restaurant/Restaurant'
-import Add from './Add/Add'
+import Restaurant from "./DashBoard/Restaurant/Restaurant";
+import Add from "./Add/Add";
 
+import Footer from "./Footer/Footer";
 
-import Footer from './Footer/Footer'
-
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
-
-class App extends Component{
+class App extends Component {
   render() {
-    return(
-      <div className="App" style={{backgroundColor:'azure'}} > 
+    return (
+      <div className="App" style={{ backgroundColor: "azure" }}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={DashBoard} />
 
-      
-      <BrowserRouter>
-        <Switch>
-          
-        <Route path='/' exact component={DashBoard} />
+            <Route path="/register" exact component={Register} />
 
-        <Route path='/register' exact component={Register} />
+            <Route path="/dashboard/:id" exact component={Restaurant} />
 
-        <Route path='/dashboard/:id' exact component={Restaurant} />
+            <Route path="/signin" exact component={SignIn} />
 
-        <Route path='/signin' exact component={SignIn}  />
+            <Route path="/add" exact component={Add} />
 
-        <Route path='/add' exact component={Add} />
-   
-        {/* <Route path='/food' exact component={Food} /> */}   
-        </Switch>
-      </BrowserRouter>
-      <Footer/>
-      
-
-    </div>
-    )
+            <Route path="/food" exact component={Food} />
+          </Switch>
+        </BrowserRouter>
+        <Footer />
+      </div>
+    );
   }
 }
-
-
+//test
 const mapStateToProps = (state) => {
-  return state
-}
+  return state;
+};
 
-export default connect(mapStateToProps, null) (App);
+export default connect(mapStateToProps, null)(App);
