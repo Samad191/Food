@@ -40,7 +40,7 @@ class App extends Component {
     );
   }
 }
-
+//test
 const mapStateToProps = (state) => {
   return state;
 };
